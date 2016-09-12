@@ -1,19 +1,16 @@
-<html>
-    <head>
-	<title>Anjalis' Blog</title>
-    </head>
-    <body>
+{% extends 'blog_app/base.html' %}
 
+{% block content %}
 	{% for post in posts %} 
 	<div>
-	  <h1> {{ post.title }} </h1>
-	  <p>  Published date: {{ post.published_date }} </p>
+	  <h1> <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a> </h1>
+	  {% if post.published_date %}
+	    <p>  Published date: {{ post.published_date }} </p>
+	  {% endif %}
 	  <p>  {{ post.text|linebreaksbr }} </p>
-	    <p> Author: {{ post.author }} </p>
+	  <p> Author: {{ post.author }} </p>
 	</div>
 	{% endfor %}
+{% endblock %}
 
-    </body>
-</html>
-<html>
-</html>
+
