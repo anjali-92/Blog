@@ -3,6 +3,9 @@
 	<title>Anjalis' Blog</title>
     </head>
     <body>
+	{% if user.is_authenticated %}
+	<a href="{% url 'new_post' %}">New Post</a>
+	{% endif %}
     {% block content %}
 
     {% endblock %}
